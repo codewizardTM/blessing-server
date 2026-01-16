@@ -4,6 +4,8 @@ import { blessings } from "./blessing";
 const app = express();
 const port = process.env.PORT || 3000;
 
+const host = process.env.HOST || "0.0.0.0";
+
 /** 健康检查 */
 app.get("/health", (req, res) => {
   res.status(200).json({
@@ -22,6 +24,6 @@ app.get("/api/blessing", (req, res) => {
   });
 });
 
-app.listen(port, () => {
+app.listen(port as number, host, () => {
   console.log(`🚀 server running at http://localhost:${port}`);
 });
